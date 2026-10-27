@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  # declares a jenkins service
+  jenkins:
+    # builds Dockerfile from the current directory
+    build: .
+    # set the container name
+    container_name: jenkins-ci
+    # set ports
+    ports:
+      # web ui port
+      - "8080:8080"
+      # used by jenkins worker agents
+      - "50000:50000"
+    volumes:
+      # persist jenkins data
+      - jenkins_home:/var/jenkins_home
+      # let jenkins talk to the host's docker engine
+      - /var/run/docker.sock:/var/run/docker.sock
+
+# create the named volume
+volumes:
+  jenkins_home:
