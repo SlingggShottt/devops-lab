@@ -1,0 +1,17 @@
+minikube start --cpus=2 --memory=4096
+minikube dashboard          # opens browser; leave this terminal running
+
+
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
+kubectl get pods
+kubectl get nodes
+kubectl get svc
+kubectl logs deploy/nginx-deployment
+kubectl describe pod <pod-name>
+minikube service nginx-service    # browser shows "Welcome to nginx!"
+
+
+kubectl delete svc nginx-service
+kubectl delete deployments --all
+kubectl get pods    # should be empty soon
