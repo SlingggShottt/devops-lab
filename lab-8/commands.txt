@@ -1,6 +1,3 @@
-
-Program 8
-
 kubectl apply -f python-pod.yaml
 
 kubectl exec -it python-pod -- python --version
